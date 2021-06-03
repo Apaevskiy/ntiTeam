@@ -1,13 +1,13 @@
-package ru.paevskiy.ntiteam;
+package ru.paevskiy.ntiTeam;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class NtiteamApplication {
+public class NtiTeamApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(NtiteamApplication.class, args);
+        SpringApplication.run(NtiTeamApplication.class, args);
     }
 
 }
