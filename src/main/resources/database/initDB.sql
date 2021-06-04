@@ -6,7 +6,8 @@ drop table if exists public.lords;
 CREATE TABLE IF NOT EXISTS public.lords
 (
     lordId SERIAL PRIMARY KEY,
-    nameOfLord  text NOT NULL
+    fullName  text NOT NULL,
+    age INT NOT NULL
 );
 CREATE TABLE IF NOT EXISTS public.planets
 (

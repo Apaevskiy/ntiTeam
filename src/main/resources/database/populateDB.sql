@@ -1,8 +1,8 @@
-insert into public.lords values ('Бельфегор');
-insert into public.lords values ('Асмодей');
-insert into public.lords values ('Верделет');
-insert into public.lords values ('Инкубус');
-insert into public.lords values ('Ифрит');
+insert into public.lords values ('Бельфегор',385);
+insert into public.lords values ('Асмодей',189);
+insert into public.lords values ('Верделет',245);
+insert into public.lords values ('Инкубус',478);
+insert into public.lords values ('Ифрит',951);
 
 insert into public.planets values ('Меркурий',3);
 insert into public.planets values ('Венера',5);
