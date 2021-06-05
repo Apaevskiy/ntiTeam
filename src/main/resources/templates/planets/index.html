@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Planets</title>
+</head>
+<body>
+
+<table style="width: 500px" border="1">
+    <tr>
+        <th>id</th>
+        <th>Название планеты</th>
+        <th>Имя Лорда</th>
+        <th>Возраст Лорда</th>
+    </tr>
+    <tr th:each="planet : ${planets}">
+        <td th:text="${planet.getId()}">1</td>
+        <td><a th:href="@{/planets/{id}(id=${planet.getId()})}" th:text="${planet.getNameOfPlanet()}">2</a></td>
+        <td th:text="${planet.getChaosLord().getName()}">3</td>
+        <td th:text="${planet.getChaosLord().getAge()}">4</td>
+    </tr>
+</table>
+<br/>
+<hr/>
+
+<a href="/planets/new">Create new planet</a>
+<br>
+<a href="/lords">move to lords</a>
+</body>
+</html>

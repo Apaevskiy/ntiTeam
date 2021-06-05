@@ -7,11 +7,11 @@ CREATE TABLE IF NOT EXISTS public.lords
 (
     lordId SERIAL PRIMARY KEY,
     fullName  text NOT NULL,
-    age INT NOT NULL
+    age INT
 );
 CREATE TABLE IF NOT EXISTS public.planets
 (
     planetId SERIAL PRIMARY KEY,
     nameOfPlanet text NOT NULL,
-    lordId INT REFERENCES public.lords (lordId)
+    lordId INT default 0 REFERENCES public.lords (lordId)
 );

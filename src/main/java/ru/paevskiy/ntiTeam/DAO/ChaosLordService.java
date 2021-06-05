@@ -1,9 +1,12 @@
 package ru.paevskiy.ntiTeam.DAO;
 
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import ru.paevskiy.ntiTeam.Models.ChaosLord;
 import ru.paevskiy.ntiTeam.Models.Planet;
+
+import java.util.List;
 
 @Service
 public class ChaosLordService {
@@ -13,40 +16,36 @@ public class ChaosLordService {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public void createPlanet(Planet planet) {
-        String save = "";
-        jdbcTemplate.update(save);
+    public List<ChaosLord> getAllLords(){
+        return jdbcTemplate.query("select * from lords order by lordid",new ChaosLordMapper());
+    }
+    public ChaosLord getLord(int id){
+        return jdbcTemplate.queryForObject("select * from lords where lordid=?",new ChaosLordMapper(), id);
     }
 
     public void createLord(ChaosLord chaosLord) {
-        String save = "";
-        jdbcTemplate.update(save);
+        jdbcTemplate.update("insert into lords (fullname, age) values (?,?)",
+                chaosLord.getName(), chaosLord.getAge());
     }
 
-    public boolean appointALord(ChaosLord lord, int id) {
-        if (existsById(id)) {
-            String strUpdate = "update public.planets set " +
-                    "lordid='" + lord.getName() +
-                    "' where planetid=" + id;
-            jdbcTemplate.update(strUpdate);
-            return true;
+    public List<ChaosLord> getTop(){
+        return jdbcTemplate.query("select * from lords l order by l.age limit 10",
+                new ChaosLordMapper());
+    }
+    public List<ChaosLord> getParasites(){
+        return jdbcTemplate.query("select * from lords l where lordid not in (select distinct pl.lordid from planets pl)",
+                new ChaosLordMapper());
+    }
+    public void updateLord(ChaosLord lord){
+        if (existsById(lord.getId())) {
+            jdbcTemplate.update("update public.lords set fullname=?, age=? where lordid=?",
+                    lord.getName(), lord.getAge(), lord.getId());
         }
-        return false;
     }
-
-    // Проверка, есть ли пользователь с таким id
     public boolean existsById(int id) {
-        String sql = "select COUNT(*) from lords where lordid = '" + id + "' limit 1";
-        Integer count = jdbcTemplate.queryForObject(sql, Integer.class);
+        Integer count = jdbcTemplate.queryForObject(
+                "select COUNT(*) from lords where lordid = ? limit 1",
+                Integer.class, id);
         return count != null && count != 0;
-    }
-
-    public boolean destroyPlanet(int id) { // Уничтожить Планету
-        if (existsById(id)) {
-            String strDelete = "delete from planets where planetid = " + id;
-            jdbcTemplate.update(strDelete);
-            return true;
-        }
-        return false;
     }
 }

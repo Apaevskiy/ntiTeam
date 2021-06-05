@@ -1,5 +1,8 @@
 package ru.paevskiy.ntiTeam.Models;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class ChaosLord {
     private int id;
     private String name;

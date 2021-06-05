@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New planet</title>
+</head>
+<body>
+
+<!--/*@thymesVar id="planet" type="ru.paevskiy.ntiTeam.Models.Planet"*/-->
+<form th:method="POST" th:action="@{/planets}" th:object="${planet}">
+    <label for="nameOfPlanet">Enter name of planet: </label>
+    <input type="text" th:field="*{nameOfPlanet}" id="nameOfPlanet"/>
+    <div style="color:red" th:if="${#fields.hasErrors('nameOfPlanet')}" th:errors="*{nameOfPlanet}">Name Error</div>
+    <br/>
+    <label for="chaosLord.id">Enter lord id: </label>
+    <input type="text" th:field="*{chaosLord.id}" id="chaosLord.id"/>
+    <div style="color:red" th:if="${#fields.hasErrors('chaosLord.id')}" th:errors="*{chaosLord.id}">Age Error</div>
+    <br/>
+    <input type="submit" value="Create!"/>
+</form>
+
+</body>
+</html>

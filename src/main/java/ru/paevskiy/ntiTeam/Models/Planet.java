@@ -1,17 +1,20 @@
 package ru.paevskiy.ntiTeam.Models;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Planet {
     private int id;
     private String nameOfPlanet;
-    private int idOfLord;
+    private ChaosLord chaosLord;
 
     public Planet() {
     }
 
-    public Planet(int id, String nameOfPlanet, int idOfLord) {
+    public Planet(int id, String nameOfPlanet, ChaosLord chaosLord) {
         this.id = id;
         this.nameOfPlanet = nameOfPlanet;
-        this.idOfLord = idOfLord;
+        this.chaosLord = chaosLord;
     }
 
     public int getId() {
@@ -30,12 +33,12 @@ public class Planet {
         this.nameOfPlanet = nameOfPlanet;
     }
 
-    public int getIdOfLord() {
-        return idOfLord;
+    public ChaosLord getChaosLord() {
+        return chaosLord;
     }
 
-    public void setIdOfLord(int idOfLord) {
-        this.idOfLord = idOfLord;
+    public void setChaosLord(ChaosLord chaosLord) {
+        this.chaosLord = chaosLord;
     }
 
     @Override
@@ -43,7 +46,7 @@ public class Planet {
         return "Planet{" +
                 "id=" + id +
                 ", nameOfPlanet='" + nameOfPlanet + '\'' +
-                ", idOfLord=" + idOfLord +
+                ", chaosLord=" + chaosLord +
                 '}';
     }
 }

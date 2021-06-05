@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show</title>
+</head>
+<body>
+
+<!--/*@thymesVar id="lord" type="ru.paevskiy.ntiTeam.Models.ChaosLord"*/-->
+<p th:text="${'LordId: ' + lord.getId()}">VALUE</p>
+<p th:text="${'LordFullName: ' + lord.getName()}">VALUE</p>
+<p th:text="${'LordAge: ' + lord.getAge()}">VALUE</p>
+
+
+<a th:href="@{/lords/{id}/edit(id=${lord.getId()})}">Edit</a>
+
+<form th:method="DELETE" th:action="@{/lords/{id}(id=${lord.getId()})}">
+    <input type="submit" value="Delete"/>
+</form>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Planet</title>
+</head>
+<body>
+<!--/*@thymesVar id="planet" type="ru.paevskiy.ntiTeam.Models.Planet"*/-->
+<form th:method="PATCH" th:action="@{/planets/{id}(id=${planet.getId()})}" th:object="${planet}">
+    <label for="nameOfPlanet">Название планеты: </label>
+    <input type="text" th:field="*{nameOfPlanet}" id="nameOfPlanet" disabled/>
+    <div style="color:red" th:if="${#fields.hasErrors('nameOfPlanet')}" th:errors="*{nameOfPlanet}">Name Error</div>
+    <br/>
+    <label for="lord">Лорд: </label>
+    <input type="text" th:field="*{chaosLord.id}" id="lord"/>
+    <br>
+    <input type="submit" value="Update!"/>
+</form>
+
+</body>
+</html>

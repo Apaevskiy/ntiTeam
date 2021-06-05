@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show</title>
+</head>
+<body>
+
+<!--/*@thymesVar id="planet" type="ru.paevskiy.ntiTeam.Models.Planet"*/-->
+<p th:text="${'Id: ' + planet.getId()}">VALUE</p>
+<p th:text="${'Name: ' + planet.getNameOfPlanet()}">VALUE</p>
+<p th:text="${'LordId: ' + planet.getChaosLord().getId()}">VALUE</p>
+<p th:text="${'LordFullName: ' + planet.getChaosLord().getName()}">VALUE</p>
+<p th:text="${'LordAge: ' + planet.getChaosLord().getAge()}">VALUE</p>
+
+
+<a th:href="@{/planets/{id}/edit(id=${planet.getId()})}">Edit</a>
+
+<form th:method="DELETE" th:action="@{/planets/{id}(id=${planet.getId()})}">
+    <input type="submit" value="Delete"/>
+</form>
+</body>
+</html>
