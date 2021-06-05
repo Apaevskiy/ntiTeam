@@ -12,7 +12,7 @@ insert into public.lords (fullName, age) values ('lord 7',741);
 
 insert into public.planets (nameofplanet, lordid) values ('Меркурий',3);
 insert into public.planets (nameofplanet, lordid) values ('Венера',5);
-insert into public.planets (nameofplanet, lordid) values ('Земля',5);
+insert into public.planets (nameofplanet, lordid) values ('Земля',3);
 insert into public.planets (nameofplanet, lordid) values ('Марс',4);
 insert into public.planets (nameofplanet, lordid) values ('Юпитер',4);
 insert into public.planets (nameofplanet, lordid) values ('Сатурн',1);

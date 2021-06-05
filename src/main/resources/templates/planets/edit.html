@@ -8,11 +8,12 @@
 <!--/*@thymesVar id="planet" type="ru.paevskiy.ntiTeam.Models.Planet"*/-->
 <form th:method="PATCH" th:action="@{/planets/{id}(id=${planet.getId()})}" th:object="${planet}">
     <label for="nameOfPlanet">Название планеты: </label>
-    <input type="text" th:field="*{nameOfPlanet}" id="nameOfPlanet" disabled/>
+    <input type="text" th:field="*{nameOfPlanet}" id="nameOfPlanet"/>
     <div style="color:red" th:if="${#fields.hasErrors('nameOfPlanet')}" th:errors="*{nameOfPlanet}">Name Error</div>
     <br/>
     <label for="lord">Лорд: </label>
     <input type="text" th:field="*{chaosLord.id}" id="lord"/>
+    <div style="color:red" th:if="${#fields.hasErrors('chaosLord.id')}" th:errors="*{chaosLord.id}">Name Error</div>
     <br>
     <input type="submit" value="Update!"/>
 </form>

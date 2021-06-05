@@ -28,6 +28,7 @@ public class ChaosLordController {
         model.addAttribute("lords", service.getAllLords());
         return "lords/index";
     }
+
     @PostMapping()
     public String create(@ModelAttribute("lord") @Valid ChaosLord lord,
                          BindingResult bindingResult) {
@@ -37,12 +38,20 @@ public class ChaosLordController {
         service.createLord(lord);
         return "redirect:/lords";
     }
+
     @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model) {
         model.addAttribute("lord", service.getLord(id));
 
         return "lords/show";
     }
+
+    @GetMapping("/{id}/edit")
+    public String edit(Model model, @PathVariable("id") int id) {
+        model.addAttribute("lord", service.getLord(id));
+        return "lords/edit";
+    }
+
     @PatchMapping("/{id}")
     public String update(@ModelAttribute("lords") @Valid ChaosLord lord, BindingResult bindingResult) {
         if (bindingResult.hasErrors())
@@ -51,8 +60,13 @@ public class ChaosLordController {
         service.updateLord(lord);
         return "redirect:/lords";
     }
+
     @GetMapping("/new")
     public String newChaosLord(@ModelAttribute("lord") ChaosLord planet) {
         return "lords/new";
+    }
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable("id") int id) {
+        return "redirect:/planets";
     }
 }

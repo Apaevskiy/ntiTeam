@@ -1,11 +1,13 @@
 package ru.paevskiy.ntiTeam.Models;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import java.util.Objects;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public class ChaosLord {
     private int id;
+    @NotEmpty(message = "Name should not be empty")
     private String name;
+    @Min(value = 0, message = "Age should be greater than 0")
     private int age;
 
     public ChaosLord() {
@@ -48,5 +50,18 @@ public class ChaosLord {
                 ", name='" + name + '\'' +
                 ", age=" + age +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ChaosLord lord = (ChaosLord) o;
+        return id == lord.id && age == lord.age && name.equals(lord.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, age);
     }
 }

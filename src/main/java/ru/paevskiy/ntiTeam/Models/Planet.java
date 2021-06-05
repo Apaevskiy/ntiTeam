@@ -1,10 +1,11 @@
 package ru.paevskiy.ntiTeam.Models;
 
-import org.springframework.stereotype.Component;
+import javax.validation.constraints.NotEmpty;
+import java.util.Objects;
 
-@Component
 public class Planet {
     private int id;
+    @NotEmpty(message = "Name should not be empty")
     private String nameOfPlanet;
     private ChaosLord chaosLord;
 
@@ -48,5 +49,18 @@ public class Planet {
                 ", nameOfPlanet='" + nameOfPlanet + '\'' +
                 ", chaosLord=" + chaosLord +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Planet planet = (Planet) o;
+        return id == planet.id && nameOfPlanet.equals(planet.nameOfPlanet) && chaosLord.equals(planet.chaosLord);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nameOfPlanet, chaosLord);
     }
 }
