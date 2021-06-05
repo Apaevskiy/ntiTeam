@@ -6,9 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.paevskiy.ntiTeam.DAO.ChaosLordService;
-import ru.paevskiy.ntiTeam.DAO.ChaosLordService;
 import ru.paevskiy.ntiTeam.Models.ChaosLord;
-import ru.paevskiy.ntiTeam.Models.Planet;
 
 import javax.validation.Valid;
 
@@ -65,6 +63,7 @@ public class ChaosLordController {
     public String newChaosLord(@ModelAttribute("lord") ChaosLord planet) {
         return "lords/new";
     }
+
     @DeleteMapping("/{id}")
     public String delete(@PathVariable("id") int id) {
         return "redirect:/planets";

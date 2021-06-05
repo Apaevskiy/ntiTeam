@@ -1,4 +1,5 @@
 package ru.paevskiy.ntiTeam.Models;
+
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import java.util.Objects;

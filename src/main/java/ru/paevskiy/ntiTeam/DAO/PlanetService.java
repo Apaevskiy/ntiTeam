@@ -43,10 +43,10 @@ public class PlanetService {
     }
 
     public void appointALord(Planet planet) {
-                    if (existsById(planet.getChaosLord().getId())) {
-                        jdbcTemplate.update("update public.planets set lordid=? where planetid=?",
-                                planet.getChaosLord().getId(), planet.getId());
-                    }
+        if (existsById(planet.getChaosLord().getId())) {
+            jdbcTemplate.update("update public.planets set lordid=? where planetid=?",
+                    planet.getChaosLord().getId(), planet.getId());
+        }
     }
 
     public boolean existsById(int id) {
