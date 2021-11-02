@@ -5,7 +5,7 @@
     <title>Update Planet</title>
 </head>
 <body>
-<!--/*@thymesVar id="lord" type="ru.paevskiy.ntiTeam.Models.ChaosLord"*/-->
+<!--/*@thymesVar id="lord" type="ru.paevskiy.ntiTeam.entity.Lord"*/-->
 <form th:method="PATCH" th:action="@{/lords/{id}(id=${lord.getId()})}" th:object="${lord}">
     <label for="name">Лорд id: </label>
     <input type="text" th:field="*{name}" id="name"/>

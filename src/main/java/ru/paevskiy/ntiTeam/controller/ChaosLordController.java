@@ -1,23 +1,20 @@
-package ru.paevskiy.ntiTeam.Controllers;
+package ru.paevskiy.ntiTeam.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import ru.paevskiy.ntiTeam.DAO.ChaosLordService;
-import ru.paevskiy.ntiTeam.Models.ChaosLord;
-
-import javax.validation.Valid;
-
+import ru.paevskiy.ntiTeam.service.LordService;
+import ru.paevskiy.ntiTeam.entity.Lord;
 
 @Controller
 @RequestMapping("/lords")
 public class ChaosLordController {
-    private final ChaosLordService service;
+    private final LordService service;
 
     @Autowired
-    public ChaosLordController(ChaosLordService service) {
+    public ChaosLordController(LordService service) {
         this.service = service;
     }
 
@@ -28,30 +25,28 @@ public class ChaosLordController {
     }
 
     @PostMapping()
-    public String create(@ModelAttribute("lord") @Valid ChaosLord lord,
+    public String create(@ModelAttribute("lord") Lord lord,
                          BindingResult bindingResult) {
         if (bindingResult.hasErrors())
             return "lords/new";
-
         service.createLord(lord);
         return "redirect:/lords";
     }
 
     @GetMapping("/{id}")
-    public String show(@PathVariable("id") int id, Model model) {
+    public String show(@PathVariable("id") long id, Model model) {
         model.addAttribute("lord", service.getLord(id));
-
         return "lords/show";
     }
 
     @GetMapping("/{id}/edit")
-    public String edit(Model model, @PathVariable("id") int id) {
+    public String edit(Model model, @PathVariable("id") long id) {
         model.addAttribute("lord", service.getLord(id));
         return "lords/edit";
     }
 
     @PatchMapping("/{id}")
-    public String update(@ModelAttribute("lords") @Valid ChaosLord lord, BindingResult bindingResult) {
+    public String update(@ModelAttribute("lords") Lord lord, BindingResult bindingResult) {
         if (bindingResult.hasErrors())
             return "lords/edit";
 
@@ -60,12 +55,12 @@ public class ChaosLordController {
     }
 
     @GetMapping("/new")
-    public String newChaosLord(@ModelAttribute("lord") ChaosLord planet) {
+    public String newChaosLord(@ModelAttribute("lord") Lord planet) {
         return "lords/new";
     }
 
     @DeleteMapping("/{id}")
-    public String delete(@PathVariable("id") int id) {
+    public String delete(@PathVariable("id") long id) {
         return "redirect:/planets";
     }
 }

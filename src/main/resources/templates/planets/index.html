@@ -14,10 +14,10 @@
         <th>Возраст Лорда</th>
     </tr>
     <tr th:each="planet : ${planets}">
-        <td th:text="${planet.getId()}">1</td>
-        <td><a th:href="@{/planets/{id}(id=${planet.getId()})}" th:text="${planet.getNameOfPlanet()}">2</a></td>
-        <td th:text="${planet.getChaosLord().getName()}">3</td>
-        <td th:text="${planet.getChaosLord().getAge()}">4</td>
+        <td th:text="${planet.getId()}"></td>
+        <td><a th:href="@{/planets/{id}(id=${planet.getId()})}" th:text="${planet.getName()}"></a></td>
+        <td th:text="${planet.getLord()?.name}"></td>
+        <td th:text="${planet.getLord()?.age}"></td>
     </tr>
 </table>
 <br/>

@@ -6,15 +6,15 @@
 </head>
 <body>
 
-<!--/*@thymesVar id="planet" type="ru.paevskiy.ntiTeam.Models.Planet"*/-->
+<!--/*@thymesVar id="planet" type="ru.paevskiy.ntiTeam.entity.Planet"*/-->
 <form th:method="POST" th:action="@{/planets}" th:object="${planet}">
     <label for="nameOfPlanet">Enter name of planet: </label>
-    <input type="text" th:field="*{nameOfPlanet}" id="nameOfPlanet"/>
-    <div style="color:red" th:if="${#fields.hasErrors('nameOfPlanet')}" th:errors="*{nameOfPlanet}">Name Error</div>
+    <input type="text" th:field="*{name}" id="nameOfPlanet"/>
+    <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
     <br/>
-    <label for="chaosLord.id">Enter lord id: </label>
-    <input type="text" th:field="*{chaosLord.id}" id="chaosLord.id"/>
-    <div style="color:red" th:if="${#fields.hasErrors('chaosLord.id')}" th:errors="*{chaosLord.id}">Age Error</div>
+    <label for="lord.id">Enter lord id: </label>
+    <input type="number" th:field="*{lord.id}" id="lord.id"/>
+    <div style="color:red" th:if="${#fields.hasErrors('lord.id')}" th:errors="*{lord.id}">Age Error</div>
     <br/>
     <input type="submit" value="Create!"/>
 </form>

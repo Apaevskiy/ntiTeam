@@ -6,12 +6,12 @@
 </head>
 <body>
 
-<!--/*@thymesVar id="planet" type="ru.paevskiy.ntiTeam.Models.Planet"*/-->
+<!--/*@thymesVar id="planet" type="ru.paevskiy.ntiTeam.entity.Planet"*/-->
 <p th:text="${'Id: ' + planet.getId()}">VALUE</p>
-<p th:text="${'Name: ' + planet.getNameOfPlanet()}">VALUE</p>
-<p th:text="${'LordId: ' + planet.getChaosLord().getId()}">VALUE</p>
-<p th:text="${'LordFullName: ' + planet.getChaosLord().getName()}">VALUE</p>
-<p th:text="${'LordAge: ' + planet.getChaosLord().getAge()}">VALUE</p>
+<p th:text="${'Name: ' + planet.getName()}">VALUE</p>
+<p th:text="${'LordId: ' + planet.getLord()?.id}">VALUE</p>
+<p th:text="${'LordFullName: ' + planet.getLord()?.name}">VALUE</p>
+<p th:text="${'LordAge: ' + planet.getLord()?.age}">VALUE</p>
 
 
 <a th:href="@{/planets/{id}/edit(id=${planet.getId()})}">Edit</a>

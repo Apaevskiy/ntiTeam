@@ -1,20 +1,16 @@
-package ru.paevskiy.ntiTeam.Controllers;
+package ru.paevskiy.ntiTeam.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import ru.paevskiy.ntiTeam.DAO.PlanetService;
-import ru.paevskiy.ntiTeam.Models.Planet;
-
-import javax.validation.Valid;
+import ru.paevskiy.ntiTeam.service.PlanetService;
+import ru.paevskiy.ntiTeam.entity.Planet;
 
 @Controller
 @RequestMapping("/planets")
 public class PlanetController {
-
-
     private final PlanetService service;
 
     @Autowired
@@ -40,7 +36,7 @@ public class PlanetController {
     }
 
     @PostMapping()
-    public String create(@ModelAttribute("planet") @Valid Planet planet,
+    public String create(@ModelAttribute("planet") Planet planet,
                          BindingResult bindingResult) {
         if (bindingResult.hasErrors())
             return "planets/new";
@@ -56,7 +52,7 @@ public class PlanetController {
     }
 
     @PatchMapping("/{id}")
-    public String update(@ModelAttribute("planet") @Valid Planet planet, BindingResult bindingResult) {
+    public String update(@ModelAttribute("planet") Planet planet, BindingResult bindingResult) {
         if (bindingResult.hasErrors())
             return "planets/edit";
 
