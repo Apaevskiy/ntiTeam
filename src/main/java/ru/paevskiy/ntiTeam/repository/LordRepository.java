@@ -9,6 +9,5 @@ import java.util.Optional;
 
 public interface LordRepository extends JpaRepository<Lord, Long> {
     List<Lord> findAllByPlanetsIsNull();
-    List<Lord> findTop10ByAge(int limit);
     List<Lord> findTop10ByOrderByAgeAsc();
 }

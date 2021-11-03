@@ -36,6 +36,8 @@ public class PlanetService {
     }
 
     public void appointALord(Planet planet) {
+        if(planet.getLord().getId()==0)
+            planet.setLord(null);
         repository.saveAndFlush(planet);
     }
 }

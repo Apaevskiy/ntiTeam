@@ -58,9 +58,4 @@ public class ChaosLordController {
     public String newChaosLord(@ModelAttribute("lord") Lord planet) {
         return "lords/new";
     }
-
-    @DeleteMapping("/{id}")
-    public String delete(@PathVariable("id") long id) {
-        return "redirect:/planets";
-    }
 }
